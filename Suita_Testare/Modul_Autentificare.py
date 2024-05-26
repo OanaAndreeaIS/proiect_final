@@ -51,7 +51,7 @@ class Authentification(unittest.TestCase):
     def generate_random_string(self, length=10):
         return ''.join(random.choices(string.ascii_lowercase, k=length))
 
-    def test_valid_authentification(self):
+    def authentification(self):
         print("Verificam faptul ca suntem pe pagina de autentificare a site-ului")
         fereastra_autentificare = self.driver.current_url
         assert "index.php/auth/login" in fereastra_autentificare, "Testul a picat: Nu s-a deschis fereastra de creare cont"
@@ -62,24 +62,28 @@ class Authentification(unittest.TestCase):
 
         # Introducem informatiile in campurile obligatorii
         # Username
-        username_input = self.driver.find_element(By.NAME, "username")
-        username_input.send_keys(self.username)
+        username_input = self.driver.find_element(By.NAME, "username").send_keys(self.username)
         time.sleep(2)
 
         # Password
-        password_input = self.driver.find_element(By.NAME, "password")
-        password_input.send_keys(self.password)
+        password_input = self.driver.find_element(By.NAME, "password").send_keys(self.password)
         time.sleep(2)
 
         # Apasam butonul de Login
-        buton_login = self.driver.find_element(By.CSS_SELECTOR, ".orangehrm-login-button")
-        buton_login.click()
+        buton_login = self.driver.find_element(By.CSS_SELECTOR, ".orangehrm-login-button").click()
         time.sleep(2)
 
         print("Verificam ca suntem pe prima pagina")
         prima_pagina = self.driver.current_url
         assert "index.php/dashboard/index" in prima_pagina, "Testul a picat: Autentificarea nu s-a reusit"
         print("Testul a trecut: Suntem pe prima pagina!")
+        time.sleep(2)
+
+    def test_valid_authentification(self):
+        self.authentification()
+
+    def test_logout(self):
+        self.test_valid_authentification()
         time.sleep(2)
 
         print("Ne delogam")
