@@ -17,11 +17,9 @@ from Modul_Autentificare import Authentification
 #   sa filtrez dupa noul admin adaugat
 #   sa resetez filtrele
 ##############################################################################################
-# test2:
-#   sa editez administratorul
-#   sa sterg administratorul
 
-class Administration(unittest.TestCase):
+
+class AddAdmin(unittest.TestCase):
     link = "https://opensource-demo.orangehrmlive.com/"
 
     # definim metoda setUp
@@ -35,6 +33,16 @@ class Administration(unittest.TestCase):
     @staticmethod
     def generate_random_string(length=10):
         return ''.join(random.choices(string.ascii_lowercase, k=length))
+
+    @staticmethod
+    def write_to_file(data, filename="generated_username.txt"):
+        with open(filename, 'w') as file:
+            file.write(data)
+
+    @staticmethod
+    def read_from_file(filename="generated_username.txt"):
+        with open(filename,'r') as file:
+            return file.read().strip()
 
     # definim metoda tearDown
     def tearDown(self):
@@ -114,10 +122,13 @@ class Administration(unittest.TestCase):
         # Username
         username = self.driver.find_element(By.XPATH,
                                             "//input[@class='oxd-input oxd-input--active' and @autocomplete='off']")
-        random_username = Administration.generate_random_string()
+        random_username = AddAdmin.generate_random_string()
         print("Random username: ", random_username)
         username.send_keys(random_username)
         time.sleep(2)
+
+        # Scriem username-ul in fisier
+        self.write_to_file(random_username)
 
         # Password
         password = self.driver.find_element(By.XPATH,
@@ -158,3 +169,4 @@ class Administration(unittest.TestCase):
         assert "Record Found" in rezultate_text, "Testul a picat: Nu s-a identificat adminul nostru"
         print("Avem un rezultat. Adminul a fost adaugat cu succes")
         time.sleep(2)
+
