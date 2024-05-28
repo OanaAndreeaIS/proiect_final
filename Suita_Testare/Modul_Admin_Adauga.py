@@ -25,7 +25,7 @@ class AddAdmin(unittest.TestCase):
     # definim metoda setUp
     def setUp(self):
         self.driver = webdriver.Chrome()
-        self.driver.get(self.link)  # accesam site-ul nostru Etsy
+        self.driver.get(self.link)  # accesam site-ul nostru OrangeHRM
         self.driver.maximize_window()  # facem fereastra mare
         self.driver.implicitly_wait(10)  # folosim implicitly wait
         time.sleep(2)
