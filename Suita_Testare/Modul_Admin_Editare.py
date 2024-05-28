@@ -116,14 +116,16 @@ class EditAdmin(unittest.TestCase):
         time.sleep(2)
         status.send_keys(Keys.ARROW_DOWN)
         time.sleep(2)
+        status.send_keys(Keys.ARROW_DOWN)
+        time.sleep(2)
         status.send_keys(Keys.ENTER)
         print("Status Disabled")
         time.sleep(2)
 
         # Schimbam username-ul
         username = self.driver.find_element(By.CSS_SELECTOR,".oxd-form-row .oxd-input")
-        username.click()
-        username.clear()
+        username.send_keys(Keys.CONTROL + "a")
+        username.send_keys(Keys.DELETE)
         time.sleep(2)
         new_username = EditAdmin.generate_random_string()
         username.send_keys(new_username)
