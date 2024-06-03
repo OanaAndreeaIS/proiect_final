@@ -45,6 +45,11 @@ class NewEmployee(unittest.TestCase):
             file.write(data)
 
     @staticmethod
+    def write_to_file_employee(data, filename="employee_name.txt"):
+        with open(filename, 'w') as file:
+            file.write(data)
+
+    @staticmethod
     def read_from_file(filename="id.txt"):
         with open(filename,'r') as file:
             return file.read().strip()
@@ -82,6 +87,9 @@ class NewEmployee(unittest.TestCase):
         first_name = self.generate_random_string()
         middle_name = self.generate_random_string()
         last_name = self.generate_random_string()
+
+        nume_complet = f"{first_name} {middle_name} {last_name}"
+        self.write_to_file_employee(nume_complet)
 
         # First Name
         first_name_input = self.driver.find_element(By.NAME,"firstName")
