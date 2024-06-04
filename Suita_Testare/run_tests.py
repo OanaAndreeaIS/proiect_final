@@ -15,13 +15,13 @@ class TestSuite(unittest.TestCase):
         suite = unittest.TestSuite()
 
         # Adaugă testele din clasa Alert la suită
-        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(Authentification))
-        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(AddAdmin))
-        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(EditAdmin))
-        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(DeleteAdmin))
-        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(NewEmployee))
-        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(Entitlements))
-        suite.addTests(unittest.defaultTestLoader.loadTestsFromTestCase(AssignLeave))
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(Authentification))
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(AddAdmin))
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(EditAdmin))
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(DeleteAdmin))
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(NewEmployee))
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(Entitlements))
+        suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(AssignLeave))
 
         # Creează un obiect HtmlTestRunner
         runner = HtmlTestRunner.HTMLTestRunner(

@@ -5,6 +5,7 @@ import unittest
 import time
 
 from selenium import webdriver
+from selenium.common import NoSuchElementException
 from selenium.webdriver import Keys
 
 from Modul_Autentificare import Authentification
@@ -129,7 +130,7 @@ class AssignLeave(unittest.TestCase):
         calendar_to_date.click()
         time.sleep(2)
         print("To date:", day_format)
-        comments = self.driver.find_element(By.CSS_SELECTOR,"textarea")
+        comments = self.driver.find_element(By.CSS_SELECTOR, "textarea")
         comments.click()
 
         # Partial Duration
@@ -145,11 +146,13 @@ class AssignLeave(unittest.TestCase):
 
         # Duration
         print("Duration")
-        duration_list = self.driver.find_element(By.XPATH,"//div[@id='app']/div[@class='oxd-layout']/div[@class='oxd-layout-container']/div[@class='oxd-layout-context']//form[@class='oxd-form']/div[4]/div/div[2]/div//div[@class='oxd-select-wrapper']/div[1]//i")
+        duration_list = self.driver.find_element(By.XPATH,
+                                                 "//div[@id='app']/div[@class='oxd-layout']/div[@class='oxd-layout-container']/div[@class='oxd-layout-context']//form[@class='oxd-form']/div[4]/div/div[2]/div//div[@class='oxd-select-wrapper']/div[1]//i")
         duration_list.click()
         time.sleep(2)
 
-        duration_opt = self.driver.find_element(By.XPATH,"//div[@class='oxd-select-option' and span[text()='Half Day - Morning']]")
+        duration_opt = self.driver.find_element(By.XPATH,
+                                                "//div[@class='oxd-select-option' and span[text()='Half Day - Morning']]")
         duration_opt.click()
         time.sleep(2)
         self.driver.execute_script("window.scrollBy(0, 500)")
@@ -160,15 +163,24 @@ class AssignLeave(unittest.TestCase):
         buton_assign.click()
         time.sleep(2)
 
-        print("Verificam daca putem asigna")
-        confirm_pop_up = self.driver.find_element(By.CSS_SELECTOR,
-                                                  "[class='oxd-text oxd-text--p oxd-text--subtitle-2']")
-        confirm_pop_up_text = confirm_pop_up.text.strip()
-        mesaj = "Employee does not have sufficient leave balance for leave request. Click OK to confirm leave assignment."
-        if mesaj in confirm_pop_up_text:
-            print("Nu avem zile suficiente pentru concediu. Apasam ok")
-            buton_ok = self.driver.find_element(By.CSS_SELECTOR, ".oxd-button--secondary.orangehrm-button-margin")
-            buton_ok.click()
-            time.sleep(2)
-        else:
-            print("Cererea de concediu s-a creat cu succes!")
+        print("Verificam daca a fost un succes sau angajatul nu are suficiente zile pentru concediu")
+        try:
+            succes_message = self.driver.find_element(By.XPATH,
+                                                      "//div[@id='oxd-toaster_1']/div[@class='oxd-toast oxd-toast--success oxd-toast-container--toast']")
+            succes_message_text = succes_message.text.strip()
+            print(succes_message_text)
+        except NoSuchElementException:
+            try:
+                confirm_pop_up = self.driver.find_element(By.CSS_SELECTOR,
+                                                      "[class='oxd-text oxd-text--p oxd-text--subtitle-2']")
+                confirm_pop_up_text = confirm_pop_up.text.strip()
+                mesaj = "Employee does not have sufficient leave balance for leave request. Click OK to confirm leave assignment."
+                if mesaj in confirm_pop_up_text:
+                    print("Nu avem zile suficiente pentru concediu. Apasam ok")
+                    buton_ok = self.driver.find_element(By.CSS_SELECTOR, ".oxd-button--secondary.orangehrm-button-margin")
+                    buton_ok.click()
+                    time.sleep(2)
+                else:
+                    print("Cererea de concediu s-a creat cu succes!")
+            except NoSuchElementException:
+                self.fail("Niciun mesaj de confirmare si nicio fereastra de pop-up nu a aparut!")
