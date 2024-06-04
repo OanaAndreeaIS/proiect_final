@@ -8,7 +8,6 @@ from selenium import webdriver
 from selenium.webdriver import Keys
 
 from Modul_Autentificare import Authentification
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from datetime import datetime, timedelta
 
