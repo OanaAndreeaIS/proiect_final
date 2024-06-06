@@ -8,7 +8,20 @@ Am utilizat framework-ul Unittest.
 ### Librării utilizate
 - Librăria Selenium 
 - HTMLTestRunner
+- PyAutoGUI
 
 Testele s-au bazat pe modulele de Autentificare, Administrare Admini, PIM ( înregistrare angajat) și Concediu
 
 S-au folosit metode statice , functii de adaugare , editare, stergere , cautare, salvare în fișiere, citire din fișiere
+### Instalare librării
+Selenium
+    pip install selenium
+Descriere - _Selenium este o suită de instrumente pentru automatizarea browser-elor web. Permite controlul programatic al unui browser pentru a naviga pe site-uri web, a interacționa cu elemente de pagină și a verifica comportamente specifice_
+
+HTMLTestRunner
+    pip install html-testRunner
+Descriere - _HTMLTestRunner este un modul pentru Python care extinde funcționalitatea unittest pentru a genera rapoarte de testare în format HTML. Acesta este util pentru a vizualiza rezultatele testelor într-un mod organizat și ușor de citit, oferind informații detaliate despre fiecare test, inclusiv starea acestuia (reușit/eșuat), mesajele de eroare și durata de execuție._
+
+PyAutoGUI
+    pip install pyautogui
+Descriere - _PyAutoGUI este o bibliotecă Python folosită pentru automatizarea interacțiunilor cu interfața grafică a utilizatorului (GUI). Aceasta permite controlul mișcărilor mouse-ului, apăsărilor de taste, capturii de ecran și altele, fără a depinde de driveri specifici de browser sau alte componente._
