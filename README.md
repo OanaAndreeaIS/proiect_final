@@ -1,6 +1,7 @@
 # Proiect Final Orange HRM 
 ## Descriere proiect
 OrangeHRM Live Demo este o platformă online destinată testării și explorării funcționalităților oferite de OrangeHRM, un sistem de management al resurselor umane open-source. Website-ul permite utilizatorilor să se familiarizeze cu diversele module și caracteristici ale OrangeHRM într-un mediu controlat și sigur.
+## Link către platformă: https://opensource-demo.orangehrmlive.com/
 
 ### Framework utilizat
 Am utilizat framework-ul Unittest.
