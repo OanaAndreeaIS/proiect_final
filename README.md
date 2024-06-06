@@ -13,6 +13,24 @@ Am utilizat framework-ul Unittest.
 Testele s-au bazat pe modulele de Autentificare, Administrare Admini, PIM ( înregistrare angajat) și Concediu
 
 S-au folosit metode statice , functii de adaugare , editare, stergere , cautare, salvare în fișiere, citire din fișiere
+### Limbaj de programare utilizat
+Python
+
+Descriere:
+Python este un limbaj de programare interpretat, de nivel înalt, cu o sintaxă clară și concisă, orientat către creșterea productivității dezvoltatorilor și lizibilității codului.
+
+Python poate fi descărcat și instalat de pe site-ul oficial python.org. Comanda tipică pentru a instala un pachet folosind pip.
+
+Managerul de pachete Python, este:
+
+    pip install numele_pachetului
+
+### IDE
+
+Descriere:
+
+PyCharm este un mediu integrat de dezvoltare (IDE) dezvoltat de JetBrains, destinat în special pentru limbajul de programare Python. 
+
 ### Instalare librării
 Selenium
 
