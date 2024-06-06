@@ -27,6 +27,8 @@ Managerul de pachete Python, este:
 
 ### IDE
 
+PyCharm
+
 Descriere:
 
 PyCharm este un mediu integrat de dezvoltare (IDE) dezvoltat de JetBrains, destinat în special pentru limbajul de programare Python. 
