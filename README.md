@@ -52,3 +52,14 @@ PyAutoGUI
     pip install pyautogui
 
 Descriere - _PyAutoGUI este o bibliotecă Python folosită pentru automatizarea interacțiunilor cu interfața grafică a utilizatorului (GUI). Aceasta permite controlul mișcărilor mouse-ului, apăsărilor de taste, capturii de ecran și altele, fără a depinde de driveri specifici de browser sau alte componente._
+
+### Instalare proiect
+
+Pentru a instala corect proiectul pe mediul local, vor trebui urmați pașii de mai jos:
+
+1. Clonare proiect pe mediul local
+2. Deschidere proiect în PyCharm prin apăsare File -> Open -> Selectare proiect din locația unde s-a clonat proiectul
+3. Pentru execuția testelor trebuie instalate librăriile selenium, pyautogui și html-testRunner
+4. După finalizarea instalării librăriilor se va executa fișierul _run_tests.py_
+5. După execuție, raportul poate fi deschis din folderul _reports_ 
+6. Pentru o vizualizare mai bună a raportului, se va deschide utilizând browser-ul sugerat în dreapta.
